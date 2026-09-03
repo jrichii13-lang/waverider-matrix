@@ -201,7 +201,7 @@ async def run_crypto_matrix():
     
     while True:
         try:
-            async with websockets.connect(HOT_ASSETS_URL, ping_interval=None, ping_timeout=None) as websocket:
+            async with websockets.connect(HOT_ASSETS_URL, ping_interval=None, ping_timeout=None, open_timeout=30) as websocket:
                 while True:
                     raw_message = await websocket.recv()
                     trade_data = json.loads(raw_message)
