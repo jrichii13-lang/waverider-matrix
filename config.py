@@ -1,8 +1,8 @@
 # config.py
 
 # Hackathon API Credentials
-API_KEY = "PKS25DP446CSBIV2WF3JCWKY3E"
-SECRET_KEY = "GmK4LrPCrtmiaBQZadiBQWqngt1E3rzcxo4h9t3njgf3"
+API_KEY = "PKGOMDR77WWFWHDDNZUI64RHLO"
+SECRET_KEY = "3CswzoRX5qjHRB1YNGr2W6efbpMSkmymzs7oNoQduCay"
 
 # Core Operational Constraints
 PAPER_MODE = True
