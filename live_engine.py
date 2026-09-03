@@ -96,7 +96,7 @@ def sync_with_broker():
 # CORE 1: OPTIONS MATRIX  
 # ==========================================
 async def run_options_matrix():
-    print(f"📈 [Options Core] Initializing SPY Volatility Engine...")
+    print(f"📈 [Options Core] Initializing XSP Volatility Engine...")
     while True:
         try:
             clock = trading_client.get_clock()

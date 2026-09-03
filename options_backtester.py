@@ -20,24 +20,24 @@ print(f"{C_BLUE}🌊 Booting Wave Rider v38.0 OPTIONS Simulator (Hackathon Editi
 trading_client = TradingClient(config.API_KEY, config.SECRET_KEY, paper=config.PAPER_MODE)
 option_data_client = OptionHistoricalDataClient(config.API_KEY, config.SECRET_KEY)
 
-print("📡 Targeting underlying asset: SPY")
+print("📡 Targeting underlying asset: XSP")
 
 # Use timezone-aware UTC datetime
 future_date = (datetime.now(timezone.utc) + timedelta(days=7)).date()
 
 contract_req = GetOptionContractsRequest(
-    underlying_symbols=["SPY"],
+    underlying_symbols=["XSP"],
     status="active",
     type="call",
     expiration_date_gte=str(future_date), 
     limit=10  # Bumped to 10 to ensure we find contracts with high volume
 )
 
-print("🔍 Scanning Alpaca Master Options Chain for active SPY contracts...")
+print("🔍 Scanning Alpaca Master Options Chain for active XSP contracts...")
 try:
     options_chain = trading_client.get_option_contracts(contract_req)
     contract_symbols = [contract.symbol for contract in options_chain.option_contracts]
-    print(f"🎯 Locked onto {len(contract_symbols)} active SPY contracts: {contract_symbols}")
+    print(f"🎯 Locked onto {len(contract_symbols)} active XSP contracts: {contract_symbols}")
 except Exception as e:
     print(f"{C_RED}Contract Fetch Error. Verify your API keys in config.py: {e}{C_RESET}")
     exit()
@@ -163,7 +163,7 @@ json_output = {
     "hackathon_metadata": {
         "engine": "Wave Rider v38.0",
         "asset_class": "Options",
-        "underlying": "SPY",
+        "underlying": "XSP",
         "sim_days": DAYS_TO_TEST
     },
     "metrics": {
