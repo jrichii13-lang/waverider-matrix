@@ -11,8 +11,9 @@ import datetime, json, os, re
 app = FastAPI(title="Pro Options Terminal API")
 SessionLocal = init_db()
 
-ALPACA_API_KEY = "PKNIOXW4PEG2UD5N2BZFKAPQYO"
-ALPACA_SECRET_KEY = "E44ZbqufhP9iUZvSkus3zbSCAesgVX5DavobF7GfzYAb"
+import config
+ALPACA_API_KEY = config.API_KEY
+ALPACA_SECRET_KEY = config.SECRET_KEY
 trading_client = TradingClient(ALPACA_API_KEY, ALPACA_SECRET_KEY, paper=True)
 data_client = CryptoHistoricalDataClient(ALPACA_API_KEY, ALPACA_SECRET_KEY)
 

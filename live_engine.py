@@ -35,8 +35,9 @@ print = custom_print
 # ==========================================
 # MASTER CLIENTS & KEYS
 # ==========================================
-ALPACA_API_KEY = "PKNIOXW4PEG2UD5N2BZFKAPQYO"
-ALPACA_SECRET_KEY = "E44ZbqufhP9iUZvSkus3zbSCAesgVX5DavobF7GfzYAb"
+import config
+ALPACA_API_KEY = config.API_KEY
+ALPACA_SECRET_KEY = config.SECRET_KEY
 
 Session = init_db()
 data_client = CryptoHistoricalDataClient()

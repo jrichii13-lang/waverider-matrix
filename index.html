@@ -316,7 +316,7 @@
 
     <div class="main-grid">
         <div class="chart-box">
-            <div class="box-title">📊 Live Chart (<span id="current-chart-sym" style="color:var(--accent);">CBOE:XSP</span>)</div>
+            <div class="box-title">📊 Live Chart (<span id="current-chart-sym" style="color:var(--accent);">AMEX:SPY</span>)</div>
             <div id="tv-chart-container"></div>
         </div>
         <div class="feed-box">
@@ -363,7 +363,7 @@
     <script>
         let posSort = { key: 'pnl', dir: 'desc' };
         let histSort = { key: 'closed_at', dir: 'desc' };
-        let currentChartSymbol = 'CBOE:XSP';
+        let currentChartSymbol = 'AMEX:SPY';
 
         function initTradingView(symbol) {
             currentChartSymbol = symbol;
@@ -394,7 +394,7 @@
             if (symbol.startsWith('AMEX:') || symbol.startsWith('NASDAQ:') || symbol.startsWith('NYSE:')) {
                 tvSymbol = symbol;
             } else if (symbol.startsWith('XSP')) {
-                tvSymbol = 'CBOE:XSP';
+                tvSymbol = 'AMEX:SPY';
             } else if (symbol.includes('USDT') || symbol.includes('USD')) {
                 let clean = symbol.replace('/', '').toUpperCase();
                 if (!clean.endsWith('USDT')) clean = clean.replace('USD', 'USDT');
@@ -491,7 +491,7 @@
                             <td class="${p.pnl_pct >= 0 ? 'pnl-positive' : 'pnl-negative'}" style="font-weight:bold;">${p.pnl_pct >= 0 ? '+' : ''}${(p.pnl_pct || 0).toFixed(2)}%</td>
                             <td class="${p.pnl >= 0 ? 'pnl-positive' : 'pnl-negative'}" style="font-weight:bold;">${p.pnl >= 0 ? '+' : ''}$${(p.pnl || 0).toFixed(2)}</td>
                             <td>
-                                <button class="btn-chart" onclick="switchChart('${isOptions ? 'CBOE:XSP' : p.ticker}')">📊 Chart</button>
+                                <button class="btn-chart" onclick="switchChart('${isOptions ? 'AMEX:SPY' : p.ticker}')">📊 Chart</button>
                                 <button class="btn-close" onclick="closeP('${p.ticker}')">X Close</button>
                             </td>
                         </tr>`;
@@ -530,7 +530,7 @@
         }
 
         window.onload = () => {
-            initTradingView('CBOE:XSP');
+            initTradingView('AMEX:SPY');
             refreshDashboard();
             setInterval(refreshDashboard, 1500);
         };
