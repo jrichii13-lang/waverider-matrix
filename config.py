@@ -1,21 +1,19 @@
-# config.py
+import os
+from dotenv import load_dotenv
 
-# Hackathon API Credentials
-API_KEY = "PKGOMDR77WWFWHDDNZUI64RHLO"
-SECRET_KEY = "3CswzoRX5qjHRB1YNGr2W6efbpMSkmymzs7oNoQduCay"
+load_dotenv()
 
-# Core Operational Constraints
-PAPER_MODE = True
-INITIAL_CAPITAL = 100000.0
-ALLOC_PCT = 0.04
-MAX_CONCURRENT = 6
+# Strict environment variable loading with no plaintext fallbacks
+API_KEY = os.getenv("APINAME_API_KEY") or os.getenv("APCA_API_KEY_ID")
+SECRET_KEY = os.getenv("APINAME_SECRET_KEY") or os.getenv("APCA_API_SECRET_KEY")
+PAPER_MODE = os.getenv("PAPER_MODE", "True").lower() == "true"
 
-# Options Volatility Parameters
-BASE_TP_PCT = 0.10
-RECOVERY_DROP_PCT = -0.15
+if not API_KEY or not SECRET_KEY:
+    raise ValueError(
+        "CRITICAL: Alpaca API credentials missing! Ensure APCA_API_KEY_ID and APCA_API_SECRET_KEY are set in your environment or .env file."
+    )
 
-# DSP Mathematics
-RSI_PERIOD = 14
-STOCH_LIMIT = 0.20
-BB_PERIOD = 20
-BB_PCT_LIMIT = 0.05
+# Engine Constants
+STOP_LOSS_PCT = float(os.getenv("STOP_LOSS_PCT", "-0.015"))
+TAKE_PROFIT_PCT = float(os.getenv("TAKE_PROFIT_PCT", "0.02"))
+TRADE_ALLOCATION_PCT = float(os.getenv("TRADE_ALLOCATION_PCT", "0.40"))

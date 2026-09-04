@@ -2,3 +2,6 @@
 __pycache__/
 venv/
 *.db
+.env
+__pycache__/
+venv/
